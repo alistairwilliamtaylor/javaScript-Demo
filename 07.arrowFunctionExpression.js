@@ -1,19 +1,54 @@
-//TWO SYNTAXES FOR DEFINING A FUNCTION:
+// TWO SYNTAXES FOR DEFINING A FUNCTION:
 
-// this function which takes no arguments:
-function sayHello() {
-    console.log("Hello!");
+// this:
+function add1(number) {
+    return number + 1
 }
+// or this (don't need return keyword because arrow does that job):
+const add2 = number => number + 2; 
 
-// or this function which takes no arguments:
-const sayHelloWorld = () => console.log("Hello world!"); 
 
-// EITHER IS FINE :) 
+// EITHER IS FINE, THEY'LL DO THE SAME THING
+add1(7)
+// => 8
 
-// Arrow Functions can also be used when the function takes arguments:
+add2(7)
+// => 9
 
-// if there's only one argument, you don't need parentheses
-const sayHelloToFriend = name => console.log(`Hello ${name}`);
+// BONUS 1: WHEN DO I USE PARENTHESES?
 
-// if there's more than one argument, you HAVE to use parentheses
+// NO ARGUMENT
+// if there's zero arguments, you need empty parentheses
+const sayHello = () => console.log("Hello!")
+sayHello()
+// will print: "Hello!"
+
+// ONE ARGUMENT
+// if there's only one argument, you don't need parentheses (but you can if you want)
+const sayHelloToFriend = name => console.log(`Hello ${name}!`);
+sayHelloToFriend("Amy")
+// will print: "Hello Amy!"
+
+// MULTIPLE ARGUMENTS
+// if there's more than one argument, you HAVE to use parentheses and separate with comma
 const giveMessageToPerson = (message, recipient) => console.log(`${message} for ${recipient}`);
+giveMessageToPerson("Incoming call", "John")
+// will print: "Incoming call for John"
+
+
+// EXTRA WORD OF CAUTION
+
+// Watch out, if you use arrow but also parentheses, you NEED return keyword
+// e.g. this won't work as expected:
+const add3 = number => {
+    number + 3
+} 
+console.log(add3(10));
+// => undefined
+
+// but this will work as expected:
+const add4 = number => {
+    return number + 4
+}
+add4(10)
+// => 14

@@ -1,21 +1,24 @@
-// FOREACH CAN BE USED TO DO ACTIONS, BUT IT RETURNS NOTHING
+// Previously we saw this use of forEach:
+const threeFriends = ["Tania", "Matt", "Vinh"]
+threeFriends.forEach(friend => console.log(friend));
+// prints:  "Tania"
+//          "Matt"
+//          "Vinh"
+
+// This is a nice use of for each because console.log doesn't return anything
+// We are doing an action (printing) but not calculating/transforming values
+// But now let's imagine we want to make some changes to an array:
+
 const someNumbers = [1, 2, 3];
 // this doesn't do anything at all
-someNumbers.forEach((number) => number + 1);
+someNumbers.forEach(number => number + 1);
+console.log(someNumbers);
+// => [1, 2, 3]
+// hmmm that's a shame... forEach is only good at side-effect actions
 
-// But we could use FOREACH to update the values and store them
-// somewhere else:
-const putTheIncrementedNumbersHere = [];
 
-someNumbers.forEach((number) => {
-  putTheIncrementedNumbersHere.push(number + 1);
-});
-
-console.log(putTheIncrementedNumbersHere);
-// => [2, 3, 4]
-
-// MAP MAKES IT EASIER TO DO THIS
-// It returns a new array in which all of the elements have had the function applied to them
+// MAP
+// Mapping returns a new array in which all of the elements have had the function applied to them
 // In this example, the "mapped" values are stored in incrementedNumbers
 const otherNumbers = [4, 5, 6];
 const incrementedNumbers = otherNumbers.map((number) => number + 1);
